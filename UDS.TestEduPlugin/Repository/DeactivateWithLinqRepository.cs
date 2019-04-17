@@ -23,14 +23,14 @@ namespace UDS.GurinPlugin.Repository
         {
             _service = service;
             _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
+            _serviceProxy.EnableProxyTypes();
+
             clientCredentials.UserName.UserName = "UDS\\s.gurin";
             clientCredentials.UserName.Password = "SGuds3179";
 
         }
         public IEnumerable<myprefix_gu_main> GetRecords()
         {
-
-            _serviceProxy.EnableProxyTypes();
 
             var _context = new CrmServiceContext(_serviceProxy);
             var guMains = (
@@ -60,8 +60,6 @@ namespace UDS.GurinPlugin.Repository
 
         public Entity GetRecordsTask5(EntityReference id, Guid guId)
         {
-            _serviceProxy.EnableProxyTypes();
-
             var _context = new CrmServiceContext(_serviceProxy);
             var guMains = (
                     from a in _context.myprefix_gu_mainSet
