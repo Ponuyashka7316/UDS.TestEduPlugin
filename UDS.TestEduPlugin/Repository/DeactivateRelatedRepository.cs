@@ -14,7 +14,7 @@ namespace UDS.GurinPlugin.Repository
     {
         private IOrganizationService _service;
         private OrganizationServiceProxy _serviceProxy;
-        private const string EntityName = "myprefix_gu_main";
+        private const string EntityName = "new_l";
         public DeactivateRelatedRepository(IOrganizationService service)
         {
             _service = service;
@@ -23,14 +23,14 @@ namespace UDS.GurinPlugin.Repository
 
         public void GetRecords(Guid id)
         {
-            var query = new QueryExpression("new_l")
+            var query = new QueryExpression(EntityName)
             {
                 Distinct = true,
 
                 ColumnSet = new ColumnSet(true),
                 LinkEntities =
                 {
-                    new LinkEntity("new_l", "new_new_l_myprefix_gu_main", "new_lid", "new_lid", JoinOperator.Inner)
+                    new LinkEntity(EntityName, "new_new_l_myprefix_gu_main", "new_lid", "new_lid", JoinOperator.Inner)
                   {
                       LinkEntities =
                       {

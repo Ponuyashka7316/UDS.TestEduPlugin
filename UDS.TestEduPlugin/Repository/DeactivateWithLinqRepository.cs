@@ -22,10 +22,11 @@ namespace UDS.GurinPlugin.Repository
         public DeactivateWithLinqRepository(IOrganizationService service)
         {
             _service = service;
-            _serviceProxy.EnableProxyTypes();
             clientCredentials.UserName.UserName = "UDS\\s.gurin";
             clientCredentials.UserName.Password = "SGuds3179";
             _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
+            _serviceProxy.EnableProxyTypes();
+
 
         }
         public IEnumerable<myprefix_gu_main> GetRecords()

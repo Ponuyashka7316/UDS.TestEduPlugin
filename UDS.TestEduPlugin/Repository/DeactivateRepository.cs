@@ -26,7 +26,7 @@ namespace UDS.GurinPlugin.Repository
         //Выбираем все сущности А где поле лукапа не пустое и есть связанные Б где поле лукапа не пустое
         public EntityCollection GetRecords()
         {
-            var query = new QueryExpression("myprefix_gu_main")
+            var query = new QueryExpression(EntityName)
             {
                 Distinct = true,
 
@@ -41,7 +41,7 @@ namespace UDS.GurinPlugin.Repository
                 },
                 LinkEntities =
                 {
-                    new LinkEntity("myprefix_gu_main", "new_new_l_myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid", JoinOperator.Inner)
+                    new LinkEntity(EntityName, "new_new_l_myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid", JoinOperator.Inner)
                         // делаем линк на промежуточную таблицу
                   {
                       LinkEntities =
@@ -76,13 +76,11 @@ namespace UDS.GurinPlugin.Repository
                 }
             }
             return res;
-
         }
 
         //по переданному лукапу делаем запрос NN на выборку всех  записей сущности А, где лукап записи А такой же как и лукап записи Б 
         public Entity GetRecordsTask5(EntityReference id, Guid mainId)
         {
-
             var query = new QueryExpression("myprefix_gu_main")
             {
                 Distinct = true,
@@ -101,7 +99,6 @@ namespace UDS.GurinPlugin.Repository
                     new LinkEntity("myprefix_gu_main", "new_new_l_myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid", JoinOperator.Inner)
                         // делаем линк на промежуточную таблицу
                   {
-
                       LinkEntities =
                       {
                       new LinkEntity("new_new_l_myprefix_gu_main", "new_l", "new_lid", "new_lid",
@@ -111,9 +108,7 @@ namespace UDS.GurinPlugin.Repository
                               {
                                     Conditions =
                                  {
-
-                                    new ConditionExpression("new_accountid", ConditionOperator.Equal, id.Id)
-
+                                      new ConditionExpression("new_accountid", ConditionOperator.Equal, id.Id)
                                  }
                               }
                             }
