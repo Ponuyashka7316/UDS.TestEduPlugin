@@ -58,25 +58,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionPlugin.cs" />
-    <Compile Include="CustomStep.cs" />
+    <Compile Include="Plugins\ActionPlugin.cs" />
+    <Compile Include="Plugins\CustomStep.cs" />
     <Compile Include="DataContext\Account.cs" />
     <Compile Include="DataContext\CrmServiceContext.cs" />
     <Compile Include="DataContext\myprefix_gu_main.cs" />
     <Compile Include="DataContext\new_l.cs" />
     <Compile Include="DataContext\new_new_l_myprefix_gu_main.cs" />
-    <Compile Include="FieldSetter.cs" />
-    <Compile Include="GuTask_3_1.cs" />
-    <Compile Include="GuTask_3_2.cs" />
-    <Compile Include="GuTask_3_3.cs" />
-    <Compile Include="GuUpdateEntity_1_2.cs" />
-    <Compile Include="Gu_1_1.cs" />
+    <Compile Include="Plugins\FieldSetter.cs" />
+    <Compile Include="Plugins\GuTask_3_1.cs" />
+    <Compile Include="Plugins\GuTask_3_2.cs" />
+    <Compile Include="Plugins\GuTask_3_3.cs" />
+    <Compile Include="Plugins\GuUpdateEntity_1_2.cs" />
+    <Compile Include="Plugins\Gu_1_1.cs" />
     <Compile Include="Repository\ContactRepository.cs" />
     <Compile Include="Repository\DeactivateRelatedRepository.cs" />
     <Compile Include="Repository\DeactivateRepository.cs" />
     <Compile Include="Repository\DeactivateWithLinqRepository.cs" />
     <Compile Include="ServiceClass.cs" />
-    <Compile Include="TestEduPlugin.cs" />
+    <Compile Include="Plugins\TestEduPlugin.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
