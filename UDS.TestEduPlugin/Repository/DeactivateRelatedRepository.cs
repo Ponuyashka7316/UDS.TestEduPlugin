@@ -13,7 +13,6 @@ namespace UDS.GurinPlugin.Repository
     public class DeactivateRelatedRepository
     {
         private IOrganizationService _service;
-        private OrganizationServiceProxy _serviceProxy;
         private const string EntityName = "new_l";
         public DeactivateRelatedRepository(IOrganizationService service)
         {
@@ -21,7 +20,7 @@ namespace UDS.GurinPlugin.Repository
 
         }
 
-        public void GetRecords(Guid id)
+        public void DeactivateRecords(Guid id)
         {
             var query = new QueryExpression(EntityName)
             {

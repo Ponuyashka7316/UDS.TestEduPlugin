@@ -15,7 +15,6 @@ namespace UDS.GurinPlugin.Repository
     public class DeactivateRepository
     {
         private IOrganizationService _service;
-        private OrganizationServiceProxy _serviceProxy;
         private const string EntityName = "myprefix_gu_main";
         DateTime date1 = DateTime.Now;
         public DeactivateRepository(IOrganizationService service)
@@ -65,7 +64,7 @@ namespace UDS.GurinPlugin.Repository
             foreach (var item in res.Entities)
             {
                 var recordToDeactivate =
-                    GetRecordsTask5(item.GetAttributeValue<EntityReference>("new_lookupfield"), item.Id);
+                    GetPassableEntities(item.GetAttributeValue<EntityReference>("new_lookupfield"), item.Id);
                 if (recordToDeactivate != null)
                 {
                     //deactivate
@@ -79,7 +78,7 @@ namespace UDS.GurinPlugin.Repository
         }
 
         //по переданному лукапу делаем запрос NN на выборку всех  записей сущности А, где лукап записи А такой же как и лукап записи Б 
-        public Entity GetRecordsTask5(EntityReference id, Guid mainId)
+        public Entity GetPassableEntities(EntityReference id, Guid mainId)
         {
             var query = new QueryExpression("myprefix_gu_main")
             {
@@ -115,8 +114,7 @@ namespace UDS.GurinPlugin.Repository
                         }
 
                     }
-
-
+                    
 
                 }
             };

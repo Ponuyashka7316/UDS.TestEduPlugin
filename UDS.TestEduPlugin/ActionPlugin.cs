@@ -26,9 +26,9 @@ namespace UDS.GurinPlugin
                 return;
             }
             IOrganizationService service = localContext.OrganizationService;
-            Guid currentEntity = Guid.Parse(localContext.PluginExecutionContext.InputParameters["guentity"].ToString());
+            Guid currentEntityId = Guid.Parse(localContext.PluginExecutionContext.InputParameters["guentity"].ToString());
             DeactivateRelatedRepository deact = new DeactivateRelatedRepository(service);
-            deact.GetRecords(currentEntity);
+            deact.DeactivateRecords(currentEntityId);
         }
     }
 }

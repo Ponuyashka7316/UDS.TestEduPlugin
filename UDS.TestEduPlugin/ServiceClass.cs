@@ -16,7 +16,7 @@ namespace UDS.GurinPlugin
             _service = service;
         }
 
-        //uncomment nessecary code
+        //uncomment necessary code
         public void MainMethod()
         {
             DeactivateWithLinqRepository rep = new DeactivateWithLinqRepository(_service);
@@ -31,16 +31,18 @@ namespace UDS.GurinPlugin
                 Console.WriteLine("No Gu mains");
             }
             Console.ReadLine();
-            //ContactRepository contactRepository = new ContactRepository(_service);
-            //EntityCollection contacts = contactRepository.GetContactsWithPhone(new Guid("09C2DEE9-84B8-E711-80FB-00155D05FA01"));
-            //if (contacts != null)
-            //{
-            //    Console.WriteLine(contacts.Entities.Count);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("No contacts");
-            //}
+            /*
+            ContactRepository contactRepository = new ContactRepository(_service);
+            EntityCollection contacts = contactRepository.GetContactsWithPhone(new Guid("09C2DEE9-84B8-E711-80FB-00155D05FA01"));
+            if (contacts != null)
+            {
+                Console.WriteLine(contacts.Entities.Count);
+            }
+            else
+            {
+                Console.WriteLine("No contacts");
+            }
+            */
 
             /*
            DeactivateRepository rep = new DeactivateRepository(_service);

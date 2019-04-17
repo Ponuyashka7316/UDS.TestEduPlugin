@@ -18,11 +18,7 @@ namespace UDS.GurinPlugin
                     "contact",
                     PullThePlugin));
         }
-        /*
-         3)	Написать плагин на удаление контакта. Если к этому контакту была привязана тестовая сущность А,
-         то после удаления контакта выводить в информационное поле А: из системы был удален контакт с e-mail:
-         [e-mail удаленного контакта].
-             */
+        
         private void PullThePlugin(LocalPluginContext localContext)
         {
             Entity target = (Entity)localContext.PluginExecutionContext.InputParameters["Target"];

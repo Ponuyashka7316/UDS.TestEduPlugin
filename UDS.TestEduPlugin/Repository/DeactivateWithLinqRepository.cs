@@ -26,24 +26,23 @@ namespace UDS.GurinPlugin.Repository
             clientCredentials.UserName.Password = "SGuds3179";
             _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
             _serviceProxy.EnableProxyTypes();
-
-
         }
         public IEnumerable<myprefix_gu_main> GetRecords()
         {
 
             var _context = new CrmServiceContext(_serviceProxy);
             var guMains = (
-                    from a in _context.myprefix_gu_mainSet
-                    join relationEntity in _context.new_new_l_myprefix_gu_mainSet on a.myprefix_gu_mainId
+                    from record in _context.myprefix_gu_mainSet
+                    join relationEntity in _context.new_new_l_myprefix_gu_mainSet on record.myprefix_gu_mainId
                             equals relationEntity.myprefix_gu_mainid
                     join L in _context.new_lSet on relationEntity.new_lid equals L.new_lId
-                    where a.new_lookupfield != null && L.new_accountid != null
-                    select a).ToList();
+                    where record.new_lookupfield != null && L.new_accountid != null
+                    where record.CreatedOn > DateTime.Now.AddDays(-20)
+                    select record).ToList();
 
             foreach (var item in guMains)
             {
-                var recordToDeactivate = GetRecordsTask5(item.GetAttributeValue<EntityReference>("new_lookupfield"), item.Id);
+                var recordToDeactivate = GetPassableEntities(item.GetAttributeValue<EntityReference>("new_lookupfield"), item.Id);
                 if (recordToDeactivate != null)
                 {
                     Entity tempEntity = new Entity(EntityName, recordToDeactivate.Id);
@@ -51,22 +50,22 @@ namespace UDS.GurinPlugin.Repository
                     //deactivate
                     tempEntity["statecode"] = new OptionSetValue(1);
                     tempEntity["statuscode"] = new OptionSetValue(2);
-                    _service.Update((Entity)tempEntity);
+                    _service.Update(tempEntity);
                 }
             }
             return guMains.Distinct();
 
         }
 
-        public Entity GetRecordsTask5(EntityReference id, Guid guId)
+        public Entity GetPassableEntities(EntityReference id, Guid guId)
         {
             var _context = new CrmServiceContext(_serviceProxy);
             var guMains = (
-                    from a in _context.myprefix_gu_mainSet
-                    join relationEntity in _context.new_new_l_myprefix_gu_mainSet on a.myprefix_gu_mainId equals relationEntity.myprefix_gu_mainid
+                    from record in _context.myprefix_gu_mainSet
+                    join relationEntity in _context.new_new_l_myprefix_gu_mainSet on record.myprefix_gu_mainId equals relationEntity.myprefix_gu_mainid
                     join L in _context.new_lSet on relationEntity.new_lid equals L.new_lId
-                    where L.new_accountid == id && a.new_lookupfield == id && a.myprefix_gu_mainId == guId
-                    select a).ToList();
+                    where L.new_accountid == id && record.new_lookupfield == id && record.myprefix_gu_mainId == guId
+                    select record).ToList();
             if (guMains.Count > 0)
             {
                 return guMains.Distinct().FirstOrDefault();

@@ -40,7 +40,7 @@ namespace UDS.GurinPlugin
             if (guMainReference != null)
             {
                 newTempEntity["statecode"] = new OptionSetValue(1);
-                newTempEntity["statuscode"] = new OptionSetValue(2);
+                newTempEntity["statuscode"] = new OptionSetValue(2);    //should use SetStateRequest
                 Entity recordToUpdate = service.Retrieve(guMainReference.LogicalName, guMainReference.Id, new ColumnSet(true));
                 var temp = image.GetAttributeValue<string>("emailaddress1");
                 recordToUpdate["new_associatedcontacts"] = temp + "\t\n" + recordToUpdate.GetAttributeValue<string>("new_associatedcontacts");

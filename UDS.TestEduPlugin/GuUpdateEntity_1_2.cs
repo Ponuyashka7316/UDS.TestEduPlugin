@@ -31,13 +31,13 @@ namespace UDS.GurinPlugin
             {
                 return;
             }
-            EntityReference contactRef = target.GetAttributeValue<EntityReference>("new_contact");
+            EntityReference contactReference = target.GetAttributeValue<EntityReference>("new_contact");
             IOrganizationService service = localContext.OrganizationService;
 
-            if (contactRef != null)
+            if (contactReference != null)
             {
                 string[] srt = { "emailaddress1" };
-                Entity linkedEntity = service.Retrieve(contactRef.LogicalName, contactRef.Id, new ColumnSet(srt));
+                Entity linkedEntity = service.Retrieve(contactReference.LogicalName, contactReference.Id, new ColumnSet(srt));
                 Entity newTempEntity = new Entity(target.LogicalName, target.Id);
 
                 if (linkedEntity.GetAttributeValue<string>("emailaddress1") != null)

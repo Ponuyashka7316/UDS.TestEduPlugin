@@ -34,7 +34,7 @@ namespace UDS.GurinPlugin
                 Entity contactCompanyName = service.Retrieve(contactReference.LogicalName, contactReference.Id, new ColumnSet(srt));
                 target["new_lookupfield"] = contactCompanyName.GetAttributeValue<EntityReference>("parentcustomerid");
             }
-            if (companyReference != null)
+            else if (companyReference != null)
             {
                 string[] srt = { "primarycontactid" };
                 Entity companyPrimaryContact = service.Retrieve(companyReference.LogicalName, companyReference.Id, new ColumnSet(srt));
