@@ -26,10 +26,10 @@ namespace UDS.GurinPlugin
         private void PullThePlugin(LocalPluginContext localContext)
         {
             Entity target = (Entity)localContext.PluginExecutionContext.InputParameters["Target"];
-           /* if (!localContext.PluginExecutionContext.PreEntityImages.Contains("GuImage"))
+            if (!localContext.PluginExecutionContext.PreEntityImages.Contains("GuImage"))
             {
                 throw new InvalidPluginExecutionException("image does not exist");
-            }*/
+            }
             Entity image = localContext.PluginExecutionContext.PreEntityImages["GuImage"];
             EntityReference guMainReference = image.GetAttributeValue<EntityReference>("new_guentityid");
             IOrganizationService service = localContext.OrganizationService;
@@ -40,7 +40,6 @@ namespace UDS.GurinPlugin
                 var emailAddress = image.GetAttributeValue<string>("emailaddress1");
                 recordToUpdate["new_associatedcontacts"] =  "\t\n из системы был удален контакт с e-mail " + emailAddress;
                 service.Update(recordToUpdate);
-                //service.Update(someNewEnt);
 
             }
         }

@@ -15,14 +15,14 @@ namespace UDS.GurinPlugin.Repository
     class DeactivateWithLinqRepository
     {
         private IOrganizationService _service;
-        private OrganizationServiceProxy _serviceProxy;
         private const string EntityName = "myprefix_gu_main";
         Uri oUri = new Uri("https://education.crm2016.uds.systems/XRMServices/2011/Organization.svc");
         ClientCredentials clientCredentials = new ClientCredentials();
-
+        OrganizationServiceProxy _serviceProxy;
         public DeactivateWithLinqRepository(IOrganizationService service)
         {
             _service = service;
+            _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
             clientCredentials.UserName.UserName = "UDS\\s.gurin";
             clientCredentials.UserName.Password = "SGuds3179";
 
@@ -30,7 +30,6 @@ namespace UDS.GurinPlugin.Repository
         public IEnumerable<myprefix_gu_main> GetRecords()
         {
 
-            OrganizationServiceProxy _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
             _serviceProxy.EnableProxyTypes();
 
             var _context = new CrmServiceContext(_serviceProxy);
@@ -61,7 +60,6 @@ namespace UDS.GurinPlugin.Repository
 
         public Entity GetRecordsTask5(EntityReference id, Guid guId)
         {
-            OrganizationServiceProxy _serviceProxy = new OrganizationServiceProxy(oUri, null, clientCredentials, null);
             _serviceProxy.EnableProxyTypes();
 
             var _context = new CrmServiceContext(_serviceProxy);
