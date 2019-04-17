@@ -45,7 +45,7 @@ namespace UDS.GurinPlugin
             */
 
             /*
-           DeactivateRepository rep = new DeactivateRepository(_service);
+           DeactivateMainEntityRepository rep = new DeactivateMainEntityRepository(_service);
 
            EntityCollection GuMains = rep.GetRecords();
            if (GuMains != null)

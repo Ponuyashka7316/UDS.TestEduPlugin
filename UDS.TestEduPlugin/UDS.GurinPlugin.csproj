@@ -60,11 +60,11 @@
   <ItemGroup>
     <Compile Include="Plugins\ActionPlugin.cs" />
     <Compile Include="Plugins\CustomStep.cs" />
-    <Compile Include="DataContext\Account.cs" />
-    <Compile Include="DataContext\CrmServiceContext.cs" />
-    <Compile Include="DataContext\myprefix_gu_main.cs" />
-    <Compile Include="DataContext\new_l.cs" />
-    <Compile Include="DataContext\new_new_l_myprefix_gu_main.cs" />
+    <Compile Include="Data\Account.cs" />
+    <Compile Include="Data\CrmServiceContext.cs" />
+    <Compile Include="Data\myprefix_gu_main.cs" />
+    <Compile Include="Data\new_l.cs" />
+    <Compile Include="Data\new_new_l_myprefix_gu_main.cs" />
     <Compile Include="Plugins\FieldSetter.cs" />
     <Compile Include="Plugins\GuTask_3_1.cs" />
     <Compile Include="Plugins\GuTask_3_2.cs" />

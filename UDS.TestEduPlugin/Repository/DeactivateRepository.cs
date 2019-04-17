@@ -12,12 +12,12 @@ using System.ServiceModel.Description;
 
 namespace UDS.GurinPlugin.Repository
 {
-    public class DeactivateRepository
+    public class DeactivateMainEntityRepository
     {
         private IOrganizationService _service;
         private const string EntityName = "myprefix_gu_main";
         DateTime date1 = DateTime.Now;
-        public DeactivateRepository(IOrganizationService service)
+        public DeactivateMainEntityRepository(IOrganizationService service)
         {
             _service = service;
         }

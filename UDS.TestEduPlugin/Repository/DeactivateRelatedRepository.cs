@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace UDS.GurinPlugin.Repository
 {
-    public class DeactivateRelatedRepository
+    public class DeactivateRelatedEntitiesRepository
     {
         private IOrganizationService _service;
         private const string EntityName = "new_l";
-        public DeactivateRelatedRepository(IOrganizationService service)
+        public DeactivateRelatedEntitiesRepository(IOrganizationService service)
         {
             _service = service;
 
