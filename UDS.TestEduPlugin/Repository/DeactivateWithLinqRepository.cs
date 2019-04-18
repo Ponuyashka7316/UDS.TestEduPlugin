@@ -29,7 +29,6 @@ namespace UDS.GurinPlugin.Repository
         }
         public IEnumerable<myprefix_gu_main> GetRecords()
         {
-
             var _context = new CrmServiceContext(_serviceProxy);
             var guMains = (
                     from record in _context.myprefix_gu_mainSet
@@ -54,7 +53,6 @@ namespace UDS.GurinPlugin.Repository
                 }
             }
             return guMains.Distinct();
-
         }
 
         public Entity GetPassableEntities(EntityReference id, Guid guId)

@@ -17,7 +17,6 @@ namespace UDS.GurinPlugin.Repository
         public DeactivateRelatedEntitiesRepository(IOrganizationService service)
         {
             _service = service;
-
         }
 
         public void DeactivateRecords(Guid id)
@@ -30,19 +29,19 @@ namespace UDS.GurinPlugin.Repository
                 LinkEntities =
                 {
                     new LinkEntity(EntityName, "new_new_l_myprefix_gu_main", "new_lid", "new_lid", JoinOperator.Inner)
-                  {
-                      LinkEntities =
-                      {
-                      new LinkEntity("new_new_l_myprefix_gu_main", "myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid",
+                    {
+                        LinkEntities =
+                        {
+                            new LinkEntity("new_new_l_myprefix_gu_main", "myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid",
                                 JoinOperator.Inner)
                             {
-                              LinkCriteria = new FilterExpression(LogicalOperator.And)
-                              {
+                                LinkCriteria = new FilterExpression(LogicalOperator.And)
+                                {
                                     Conditions =
-                                 {
-                                    new ConditionExpression("myprefix_gu_mainid", ConditionOperator.Equal, id)
-                                 }
-                              }
+                                    {
+                                         new ConditionExpression("myprefix_gu_mainid", ConditionOperator.Equal, id)
+                                    }
+                                }
                             }
                         }
                     }
@@ -56,7 +55,7 @@ namespace UDS.GurinPlugin.Repository
                     EntityMoniker = new EntityReference
                     {
                         Id = item.Id,
-                        LogicalName = item.LogicalName,
+                        LogicalName = item.LogicalName
                     },
                     State = new OptionSetValue(1),
                     Status = new OptionSetValue(2)

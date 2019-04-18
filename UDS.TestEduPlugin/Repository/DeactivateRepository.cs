@@ -33,28 +33,28 @@ namespace UDS.GurinPlugin.Repository
                 Criteria = new FilterExpression(LogicalOperator.And)
                 {
                     Conditions =
-                                 {
-                                    new ConditionExpression("new_lookupfield", ConditionOperator.NotNull)
-                                   // new ConditionExpression("createdon", ConditionOperator.AboveOrEqual, DateTime.Now.AddDays(-2).ToString("s"))
-                                 }
+                    {
+                        new ConditionExpression("new_lookupfield", ConditionOperator.NotNull)
+                        // new ConditionExpression("createdon", ConditionOperator.AboveOrEqual, DateTime.Now.AddDays(-2).ToString("s"))
+                    }
                 },
                 LinkEntities =
                 {
                     new LinkEntity(EntityName, "new_new_l_myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid", JoinOperator.Inner)
                         // делаем линк на промежуточную таблицу
-                  {
-                      LinkEntities =
-                      {
-                      new LinkEntity("new_new_l_myprefix_gu_main", "new_l", "new_lid", "new_lid",
+                    {
+                        LinkEntities =
+                        {
+                            new LinkEntity("new_new_l_myprefix_gu_main", "new_l", "new_lid", "new_lid",
                                 JoinOperator.Inner)
                             {
-                              LinkCriteria = new FilterExpression(LogicalOperator.And)
-                              {
+                                LinkCriteria = new FilterExpression(LogicalOperator.And)
+                                {
                                     Conditions =
-                                 {
-                                    new ConditionExpression("new_accountid", ConditionOperator.NotNull)
-                                 }
-                              }
+                                    {
+                                        new ConditionExpression("new_accountid", ConditionOperator.NotNull)
+                                    }
+                                }
                             }
                         }
                     }
@@ -89,33 +89,30 @@ namespace UDS.GurinPlugin.Repository
                 {
                     Conditions =
                                  {
-                                   new ConditionExpression("new_lookupfield", ConditionOperator.Equal, id.Id),
-                                   new ConditionExpression("myprefix_gu_mainid", ConditionOperator.Equal, mainId)
+                                     new ConditionExpression("new_lookupfield", ConditionOperator.Equal, id.Id),
+                                     new ConditionExpression("myprefix_gu_mainid", ConditionOperator.Equal, mainId)
                                  }
                 },
                 LinkEntities =
                 {
                     new LinkEntity("myprefix_gu_main", "new_new_l_myprefix_gu_main", "myprefix_gu_mainid", "myprefix_gu_mainid", JoinOperator.Inner)
                         // делаем линк на промежуточную таблицу
-                  {
-                      LinkEntities =
-                      {
-                      new LinkEntity("new_new_l_myprefix_gu_main", "new_l", "new_lid", "new_lid",
+                    {
+                        LinkEntities =
+                        {
+                            new LinkEntity("new_new_l_myprefix_gu_main", "new_l", "new_lid", "new_lid",
                                 JoinOperator.Inner)
                             {
-                              LinkCriteria = new FilterExpression(LogicalOperator.And)
-                              {
+                                LinkCriteria = new FilterExpression(LogicalOperator.And)
+                                {
                                     Conditions =
-                                 {
-                                      new ConditionExpression("new_accountid", ConditionOperator.Equal, id.Id)
-                                 }
-                              }
+                                    {
+                                        new ConditionExpression("new_accountid", ConditionOperator.Equal, id.Id)
+                                    }
+                                }
                             }
                         }
-
                     }
-                    
-
                 }
             };
             EntityCollection mainEntities = _service.RetrieveMultiple(query);
