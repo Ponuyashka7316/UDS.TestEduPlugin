@@ -37,10 +37,10 @@ namespace UDS.GurinPlugin
             if (accountReference != null)
             {
                 string[] srt = { "emailaddress1" };
-                Entity email = service.Retrieve(accountReference.LogicalName, accountReference.Id, new ColumnSet(srt));
-                if (email.GetAttributeValue<string>("emailaddress1") != null)
+                Entity account = service.Retrieve(accountReference.LogicalName, accountReference.Id, new ColumnSet(srt));
+                if (account.GetAttributeValue<string>("emailaddress1") != null)
                 {
-                    accountEmail = email.GetAttributeValue<string>("emailaddress1");
+                    accountEmail = account.GetAttributeValue<string>("emailaddress1");
                 }
 
                 OutParam.Set(executionContext, "Електронна пошта:  " + accountEmail);
