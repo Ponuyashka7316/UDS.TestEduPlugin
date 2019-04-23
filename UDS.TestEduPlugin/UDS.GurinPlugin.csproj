@@ -71,6 +71,7 @@
     <Compile Include="Plugins\GuTask_3_3.cs" />
     <Compile Include="Plugins\GuUpdateEntity_1_2.cs" />
     <Compile Include="Plugins\Gu_1_1.cs" />
+    <Compile Include="Plugins\test.cs" />
     <Compile Include="Repository\ContactRepository.cs" />
     <Compile Include="Repository\DeactivateRelatedRepository.cs" />
     <Compile Include="Repository\DeactivateRepository.cs" />
@@ -85,6 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gu_script.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

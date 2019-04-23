@@ -21,7 +21,7 @@ namespace UDS.GurinPlugin
         
         private void PullThePlugin(LocalPluginContext localContext)
         {
-            Entity target = (Entity)localContext.PluginExecutionContext.InputParameters["Target"];
+            //Entity target = (Entity)localContext.PluginExecutionContext.InputParameters["Target"];
             if (!localContext.PluginExecutionContext.PreEntityImages.Contains("GuImage"))
             {
                 throw new InvalidPluginExecutionException("image does not exist");
@@ -29,10 +29,10 @@ namespace UDS.GurinPlugin
             Entity image = localContext.PluginExecutionContext.PreEntityImages["GuImage"];
             EntityReference guMainReference = image.GetAttributeValue<EntityReference>("new_guentityid");
             IOrganizationService service = localContext.OrganizationService;
-            Entity someNewEnt = new Entity(target.LogicalName, target.Id);
+            //Entity someNewEnt = new Entity(target.LogicalName, target.Id);
             if (guMainReference != null)
             {
-                Entity recordToUpdate = service.Retrieve(guMainReference.LogicalName, guMainReference.Id, new ColumnSet(true));
+                Entity recordToUpdate = new Entity(guMainReference.LogicalName, guMainReference.Id);
                 var emailAddress = image.GetAttributeValue<string>("emailaddress1");
                 recordToUpdate["new_associatedcontacts"] =  "\t\n из системы был удален контакт с e-mail " + emailAddress;
                 service.Update(recordToUpdate);

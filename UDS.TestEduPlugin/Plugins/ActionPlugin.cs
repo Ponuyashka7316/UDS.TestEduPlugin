@@ -29,6 +29,7 @@ namespace UDS.GurinPlugin
             Guid currentEntityId = Guid.Parse(localContext.PluginExecutionContext.InputParameters["guentity"].ToString());
             DeactivateRelatedEntitiesRepository deact = new DeactivateRelatedEntitiesRepository(service);
             deact.DeactivateRecords(currentEntityId);
+            //var actionResponse = (OrganizationResponse)service.Execute(actionrequest);
         }
     }
 }
